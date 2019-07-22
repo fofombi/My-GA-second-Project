@@ -16,7 +16,7 @@ const createPlan = () => {
 // create game for a user
 
 // reset or update of my game.
-const resetPlan = (id, user, over) => {
+const resetPlan = (id, currentUser, over) => {
   return $.ajax({
     url: config.apiUrl + '/plans/' + store.plan.id,
     method: 'PATCH',
@@ -27,22 +27,22 @@ const resetPlan = (id, user, over) => {
       game: {
         cell: {
           index: id,
-          value: user
+          value: currentUser
         },
         over: over
       }
     }
   })
 }
-const myplans = id => {
-  return $.ajax({
-    url: config.apiUrl + '/plans/' + id,
-    method: 'GET',
-    headers: {
-      Authorization: 'Token token=' + store.user.token
-    }
-  })
-}
+// const myplan = id => {
+// return $.ajax({
+// url: config.apiUrl + '/plans/' + id,
+// method: 'GET',
+// headers: {
+// Authorization: 'Token token=' + store.user.token
+// }
+// })
+// }
 const allPlans = () => {
   return $.ajax({
     url: config.apiUrl + '/plans/',
@@ -73,7 +73,7 @@ const updatePlan = (index, value) => {
 module.exports = {
   createPlan,
   resetPlan,
-  myPlans,
+  // myPlan,
   allPlans,
   updatePlan
 

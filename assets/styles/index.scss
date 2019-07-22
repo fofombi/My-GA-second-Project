@@ -1,4 +1,5 @@
 @import '~bootstrap/scss/bootstrap';
+
 $black: #000;
 
 .success {
@@ -130,4 +131,10 @@ h3 {
 h4 {
   background-color: white;
     color: black;
+}
+.game-record
+{  text-align: center;
+  justify-content: center;
+  margin: 0 auto;
+  flex-direction: row;
 }
