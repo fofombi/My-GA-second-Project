@@ -35,7 +35,7 @@ const signInSuccessful = (responseData) => {
   store.user = responseData.user
 
   $('#sign-out').removeClass('hidden')
-  $('#create-game').removeClass('hidden')
+  $('#create-plan').removeClass('hidden')
   $('#change-password').removeClass('hidden')
   $('#update').show()
 
