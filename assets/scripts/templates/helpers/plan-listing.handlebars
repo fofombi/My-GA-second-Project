@@ -1,0 +1,40 @@
+{{#each plans as |plan|}}
+  {{log plan}}
+  <section data-id="{{plan.id}}">
+    <h6>Title:</h6>
+    <h3>
+      {{limit plan.title 16}}
+    </h2>
+    <h6>description:</h6>
+    <h3>
+      {{limit plan.description 16}}
+    </h3>
+
+  </h2>
+  <h6>starting_date:</h6>
+  <h3>
+    {{limit plan.starting_date 16}}
+  </h3>
+</h2>
+<h6>ending_date:</h6>
+<h3>
+  {{limit plan.ending_date 16}}
+</h3>
+</h2>
+<h6>comments:</h6>
+<h3>
+  {{limit plan.comments 16}}
+</h3>
+</h2>
+<h6>rating:</h6>
+<h3>
+  {{limit plan.rating 16}}
+</h3>
+
+    <!-- {{> partial}} -->
+    <button data-id="{{plan.id}}" class="btn btn-danger"> DELETE PLAN</button>
+    <button data-id="{{plan.id}}" class="btn btn-primary"> UPDATE PLAN</button>
+    <!-- <button class ="btn btn  danger" -->
+  </section>
+
+{{/each}}
