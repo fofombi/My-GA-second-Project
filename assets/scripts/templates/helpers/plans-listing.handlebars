@@ -1,0 +1,66 @@
+{{#each plans as |plan|}}
+  {{log plan}}
+  <section data-id="{{plan.id}}">
+    <div class="item basicBox" >
+      <h6>ID:</h6>
+      <h3>
+          {{plan.id}}
+      </h3>
+      <h6>Title:</h6>
+      <h3>
+        {{#if plan.title}}
+          {{plan.title}}
+        {{else}}
+          No title provided.
+        {{/if}}
+      </h3>
+      <h6>Description:</h6>
+      <h3>
+        {{#if plan.description}}
+          {{plan.description}}
+        {{else}}
+          No description provided.
+        {{/if}}
+      </h3>
+    <h6>starting_date:</h6>
+    <h3>
+      {{#if plan.starting_date}}
+        {{plan.starting_date}}
+      {{else}}
+        No starting_date provided.
+      {{/if}}
+    </h3>
+  </h3>
+  <h6>ending_date:</h6>
+  <h3>
+  {{#if plan.ending_date}}
+    {{plan.ending_date}}
+  {{else}}
+    No ending_date provided.
+  {{/if}}
+  </h3>
+    <h6>Comments:</h6>
+    <h3>
+      {{#if plan.comments}}
+        {{plan.comments}}
+      {{else}}
+        No comments provided.
+      {{/if}}
+    </h3>
+    <h6>Rating:</h6>
+    <p>
+      {{#if plan.rating}}
+        {{plan.rating}}
+      {{else}}
+        No rating provided.
+      {{/if}}
+    </p>
+
+  </div>
+    <!-- <button class="btn btn-danger" data-id="{{book.id}}">
+      Remove
+    </button> -->
+    <button data-id="{{plan.id}}" class="edit-button button button-block small">EDIT PLAN!</button>
+    <button data-id="{{plan.id}}" class="remove-button button button-block small">DELETE PLAN!</button>
+
+{{/each}}
