@@ -1,6 +1,7 @@
 'use strict'
 const config = require('../config')
 const store = require('../store')
+
 const createPlan = (formData) => {
   return $.ajax({
     url: config.apiUrl + '/plans',

@@ -3,10 +3,11 @@ const store = require('../store')
 // const api = require('./api.js')
 const showPlansTemplate = require('../templates/helpers/plans-listing.handlebars')
 const onePlanTemplate = require('../templates/helpers/one-plan-listing.handlebars')
+
 const createPlanSuccess = responseData => {
   $('#message').text('Create plan successfull')
   $('#create-plan').removeClass('hide')
-  $('#myModal').removeClass('modalShow')
+  $('#myModal').attr('class', 'modal')
   $('form').trigger('reset')
 }
 
@@ -16,11 +17,16 @@ const createPlanFailure = responseData => {
   $('#myModal').removeClass('modalShow')
   $('form').trigger('reset')
 }
-
+const showContent = responseData => {
+  const showPlansHtml = showPlansTemplate({ plans: responseData.plans })
+  store.data = responseData
+  store.all = responseData
+  $('.content').html(showPlansHtml)
+  $('form').trigger('reset')
+}
 const editPlanSuccess = data => {
   $('#message').text('Edit plan successful')
   $('#edit-plan').removeClass('modalShow')
-
   $('form').trigger('reset')
 }
 const editPlanFailure = data => {
@@ -28,13 +34,12 @@ const editPlanFailure = data => {
   $('form').trigger('reset')
 }
 const getAllPlanSuccess = responseData => {
-  console.log('hello')
   const showPlansHtml = showPlansTemplate({
     plans: responseData.plans
   })
   store.data = responseData
   store.all = responseData
-  $('#message').text('Get all plans successfully')
+  $('#message').text('Your Get all plans is successful')
   $('.content').html(showPlansHtml)
 }
 
@@ -48,37 +53,11 @@ const passEditElement = data => {
 }
 
 const getPlanSuccess = data => {
-  const onePlanHtml = onePlanTemplate({
-    plan: data.plan
-  })
-  $('#message').text('Get plan successfully')
+  const onePlanHtml = onePlanTemplate({plan: data.plan})
+  $('#message').text('Your Get plan is successful')
   $('.content').html(onePlanHtml)
 }
-const showPlanName = data => {
-  if (data.length !== 0) {
-    const showPlansHtml = showPlansTemplate({
-      events: data
-    })
-    $('.content').html(showPlansHtml)
-    $('#message').text('Get plan successfully')
-  } else {
-    $('#message').text('Name is not exist.')
-    $('.content').empty()
-  }
-  $('#show-modal-name').removeClass('modalShow')
-}
-const getPlanFailure = data => {
-  $('#message').text('Failed to get Plan')
-}
 
-const hidePlans = () => {
-  if ($('.content').html() === '') {
-    $('#message').text('There are nothing to hide')
-  } else {
-    $('.content').empty()
-    $('#message').text('Hide Plans Successfully')
-  }
-}
 module.exports = {
   createPlanSuccess,
   getAllPlanSuccess,
@@ -87,7 +66,5 @@ module.exports = {
   editPlanFailure,
   editPlanSuccess,
   getPlanSuccess,
-  getPlanFailure,
-  hidePlans,
-  showPlanName
+  showContent
 }
