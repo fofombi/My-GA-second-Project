@@ -4,21 +4,18 @@ const api = require('./api.js')
 const ui = require('./ui.js')
 const store = require('../store')
 store.plan = {}
+
 const onCreatePlan = event => {
   event.preventDefault()
-
   const data = getFormFields(event.target)
-  console.log(data)
   api.createPlan(data)
-    .then(ui.createplanSuccess)
+    .then(ui.createPlanSuccess)
     .catch(ui.createplanFailure)
-    .then(() => {
-      onGetAllPlans(event)
-    })
 }
 
 const onGetAllPlans = event => {
   event.preventDefault()
+
   api.getAllPlans()
     .then(ui.getAllPlanSuccess)
     .catch(ui.getAllPlanFailure)
@@ -31,9 +28,11 @@ const onDeletePlan = event => {
 
   api.deletePlan(id)
     .then(() => {
-      onGetAllPlans(event)
+      $('#message').text('DELETE successfully. Get the plans again')
     })
-    .catch(console.log)
+    .catch(() => {
+      $('#message').text('DELETE Failure.')
+    })
 }
 const openEditModal = event => {
   $('#edit-plan').addClass('modalShow')
@@ -56,13 +55,15 @@ const onEditPlan = event => {
   api.updatePlan(store)
     .then(ui.editPlanSuccess)
     .catch(ui.editPlanFailure)
+  //   .then(() => {
+  //     onGetAllPlans(event)
+  //   })
     .then(() => {
-      onGetAllPlans(event)
+      $('#message').text('EDIT successfully. Get the plans again')
     })
-}
-const onHidePlans = (event) => {
-  event.preventDefault()
-  ui.hidePlans()
+    .catch(() => {
+      $('#message').text('EDIT Failure.')
+    })
 }
 const onGetPlan = (event) => {
   // console.log('in onGetPlans')
@@ -70,15 +71,9 @@ const onGetPlan = (event) => {
     .then(ui.getPlansSuccess)
     .catch(ui.failure)
 }
-// const onClearPlans = (event) => {
-//  event.preventDefault()
-//  ui.clearPlans()
-// }
 
 const addHandlers = () => {
   $('#getPlansButton').on('click', onGetPlan)
-//  $('#clearPlansButton').on('click', onClearPla &
-//  ('body').on('click', 'delete-plan', onDeletePlan)
 }
 
 module.exports = {
@@ -87,6 +82,5 @@ module.exports = {
   onDeletePlan,
   onEditPlan,
   openEditModal,
-  onHidePlans,
   addHandlers
 }

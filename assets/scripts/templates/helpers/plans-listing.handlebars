@@ -1,5 +1,4 @@
 {{#each plans as |plan|}}
-  {{log plan}}
   <section data-id="{{plan.id}}">
     <div class="item basicBox" >
       <h6>ID:</h6>
@@ -60,7 +59,7 @@
     <!-- <button class="btn btn-danger" data-id="{{book.id}}">
       Remove
     </button> -->
-    <button data-id="{{plan.id}}" class="edit-button button button-block small">EDIT PLAN!</button>
-    <button data-id="{{plan.id}}" class="remove-button button button-block small">DELETE PLAN!</button>
+    <button data-id="{{plan.id}}" class="edit-button btn btn-info mr-2 ">EDIT PLAN !</button>
+    <button data-id="{{plan.id}}" class="remove-button btn-danger">DELETE PLAN !</button>
 
 {{/each}}

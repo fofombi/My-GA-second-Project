@@ -38,6 +38,7 @@ const signInSuccessful = (responseData) => {
   $('#create-plan').removeClass('hidden')
   $('#change-password').removeClass('hidden')
   $('#update').show()
+  $('#nav-bar').show()
 
   $('#sign-in').addClass('hidden')
   $('#sign-up').addClass('hidden')
@@ -68,6 +69,7 @@ const signOutSuccessful = responseData => {
   $('#sign-out').addClass('hidden')
   $('#create-game').addClass('hidden')
   $('#change-password').addClass('hidden')
+  $('.content').html('')
 
   $('#sign-in').removeClass('hidden')
   $('#sign-up').removeClass('hidden')
