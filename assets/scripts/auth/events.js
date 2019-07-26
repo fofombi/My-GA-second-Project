@@ -17,6 +17,8 @@ const onSignUp = event => {
 const onSignIn = event => {
   event.preventDefault()
 
+  $('#nav-bar').show()
+
   const form = event.target
   const formData = getFormFields(form)
   api.signIn(formData)
@@ -37,6 +39,9 @@ const onChangePassword = event => {
 // Sign out
 const onSignOut = event => {
   event.preventDefault()
+
+  $('#nav-bar').hide()
+
   api.signOut()
     .then(ui.signOutSuccessful)
     .catch(ui.signOutFailure)
