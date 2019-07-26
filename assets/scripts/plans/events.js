@@ -9,6 +9,11 @@ const onCreatePlan = event => {
   event.preventDefault()
   const data = getFormFields(event.target)
   api.createPlan(data)
+    .then(function () {
+      api.getAllPlans()
+        .then(ui.getAllPlanSuccess)
+        .catch(ui.getAllPlanFailure)
+    })
     .then(ui.createPlanSuccess)
     .catch(ui.createplanFailure)
 }
@@ -25,9 +30,11 @@ const onDeletePlan = event => {
   event.preventDefault()
   const target = $(event.target)
   const id = target.data('id')
-
   api.deletePlan(id)
-    .then(() => {
+    .then(function () {
+      api.getAllPlans()
+        .then(ui.getAllPlanSuccess)
+        .catch(ui.getAllPlanFailure)
       $('#message').text('DELETE successfully. Get the plans again')
     })
     .catch(() => {
@@ -53,8 +60,14 @@ const onEditPlan = event => {
   store.plan.comments = $('#inputEditComments').val()
   store.plan.rating = $('#inputEditRating').val()
   api.updatePlan(store)
+    .then(function () {
+      api.getAllPlans()
+        .then(ui.getAllPlanSuccess)
+        .catch(ui.getAllPlanFailure)
+    })
     .then(ui.editPlanSuccess)
     .catch(ui.editPlanFailure)
+
   //   .then(() => {
   //     onGetAllPlans(event)
   //   })
@@ -66,7 +79,6 @@ const onEditPlan = event => {
     })
 }
 const onGetPlan = (event) => {
-  // console.log('in onGetPlans')
   api.getPlan()
     .then(ui.getPlansSuccess)
     .catch(ui.failure)

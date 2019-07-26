@@ -44,7 +44,6 @@ const deletePlan = function (id) {
 }
 
 const updatePlan = data => {
-  console.log('the id in api: ', data.plan.id)
   return $.ajax({
     url: config.apiUrl + '/plans/' + data.plan.id,
     data: data,
