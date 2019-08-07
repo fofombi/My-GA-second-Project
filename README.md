@@ -77,6 +77,7 @@ As a user, I want to select My Plans that I have covered.
 -password
 
   * MyPlan entries
+-title
 -Descriptions
 -starting_date
 -ending_date
