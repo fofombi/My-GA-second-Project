@@ -1,0 +1,146 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+
+
+  <title>MyPlan</title>
+
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  <!-- Do not add `link` tags-->
+  <link rel="shortcut icon" type="image/x-icon" href="favicon.ico">
+
+  <!-- Do not add `script` tags-->
+  <script src="public/vendor.js" type="text/javascript" charset="utf-8" defer></script>
+  <script src="public/application.js" type="text/javascript" charset="utf-8" defer></script>
+
+</head>
+
+<body>
+  <main class="container">
+    <div class="row justify-content-center">
+      <div class="col-10">
+        <h1> WELCOME! PLEASE PLAN AHEAD.</h1>
+      </div>
+    </div>
+    <div class="row justify-content-center">
+      <div class="col-10">
+        <h2>MyPlan</h2>
+      </div>
+  </main>
+  <div class="row justify-content-center">
+    <div class="col-10">
+      <h3 id="message"></h3>
+    </div>
+  </div>
+
+  <div class="row">
+
+    <form id="sign-up" class="col-12 mb-5">
+      <h3>Sign Up</h3>
+      <input class="form-control mb-1" type="email" name="credentials[email]" placeholder="Email">
+      <input class="form-control mb-1" type="password" name="credentials[password]" placeholder="Password">
+      <input class="form-control mb-1" type="password" name="credentials[password_confirmation]" placeholder="Confirm password">
+      <button class="btn btn-primary">Sign Up!</button>
+    </form>
+
+
+    <form id="sign-in" class="col-12 mb-5">
+      <h3>Sign In</h3>
+      <input class="form-control mb-1" type="email" name="credentials[email]" placeholder="Email">
+      <input class="form-control mb-1" type="password" name="credentials[password]" placeholder="Password">
+      <button class="btn btn-primary">Sign In!</button>
+    </form>
+
+  </div>
+
+  <div class=“form-group”>
+    <form id="change-password" class="hidden">
+      <h3>Change Password</h3>
+      <input type="password" name="passwords[old]" placeholder="Old Password">
+      <input type="password" name="passwords[new]" placeholder="new Password">
+      <button class="btn btn-info mr-2" type='submit'> Change Password</button>
+    </form>
+  </div>
+  <div>
+    <div class="form-group">
+      <form id="sign-out" class="hidden">
+        <h3>Sign Out</h3>
+        <button class="btn btn-primary">Sign Out!</button>
+      </form>
+    </div>
+  </div>
+
+
+
+  <!-- The Modal -->
+  <div id="myModal2" class="modal">
+    <!-- Modal content -->
+    <div class="modal-content">
+      <span class="close">&times;</span>
+      <div class="form-group">
+      </div>
+    </div>
+  </div>
+
+
+
+  <nav id="nav-bar" class="hidden">
+    <div>
+      <form id="create-plan" class="hidden">
+        <input name="plan[title]" type="text" placeholder="title">
+        <input name="plan[description]" type="text" placeholder="description">
+        <input name="plan[starting_date]" type="date" placeholder="starting_date">
+        <input name="plan[ending_date]" type="date" placeholder="ending_date">
+        <input name="plan[comments]" type="text" placeholder="comments">
+        <input name="plan[rating]" type="text" placeholder="rating">
+        <button class="btn btn-secondary">Create Plan</button>
+      </form>
+
+    </div>
+
+
+    <div id="edit-plan" class="modal">
+      <!-- edit modal-->
+      <!-- Modal content -->
+      <div class="modal-content">
+        <span class="close">&times;</span>
+        <div class="form-group">
+          <form id="edit-plan-form">
+            <input id="inputEditTitle" class="form-control" name="plan[title]" type="text" placeholder="title">
+            <input id="inputEditDescription" class="form-control" name="plan[description]" type="text" placeholder="description">
+            <input id="inputEditStartingDate" class="form-control" name="plan[starting_date]" type="date" placeholder="starting_date">
+            <input id="inputEditEndingDate" class="form-control" name="plan[ending_date]" type="date" placeholder="ending_date">
+            <input id="inputEditComments" class="form-control" name="plan[comments]" type="text" placeholder="comments">
+            <input id="inputEditRating" class="form-control" name="plan[rating]" type="number" placeholder="rating">
+            <button class="btn btn-info mr-2">Edit-Plan</button>
+          </form>
+        </div>
+      </div>
+    </div>
+
+
+    <!-- end of edit modal-->
+
+
+
+
+
+
+    <div class="nav-buttons">
+      <button id="getPlansButton" class="btn btn-info mr-2 ">Get Plans !</button>
+    </div>
+  </nav>
+
+  <div id="content" class="content"></div>
+
+  <h1>
+    <marquee behavior="scroll" direction="left" scrollamount="10">Life is so busy! And It's easy to forget, MyPlan is here to help you!</marquee>
+  </h1>
+
+  </main>
+
+</body>
+
+</html>
