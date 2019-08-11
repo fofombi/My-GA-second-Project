@@ -35,8 +35,8 @@ main {
     &:empty {
       &::before {
         color: light-yellow($info, 100%);
-        content: 'Click Get Planss';
-        font-size: 10vh;
+        content: 'Click Get Plans';
+        font-size: 8vh;
         line-height: .90;
         text-align: center;
         width: 100%;

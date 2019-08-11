@@ -24,6 +24,7 @@ const onGetAllPlans = event => {
   api.getAllPlans()
     .then(ui.getAllPlanSuccess)
     .catch(ui.getAllPlanFailure)
+  $('#message').text('Here are  your Plans')
 }
 
 const onDeletePlan = event => {
@@ -35,7 +36,7 @@ const onDeletePlan = event => {
       api.getAllPlans()
         .then(ui.getAllPlanSuccess)
         .catch(ui.getAllPlanFailure)
-      $('#message').text('DELETE successfully. Get the plans again')
+      $('#message').text('DELETE successfully')
     })
     .catch(() => {
       $('#message').text('DELETE Failure.')
@@ -66,22 +67,21 @@ const onEditPlan = event => {
         .catch(ui.getAllPlanFailure)
     })
     .then(ui.editPlanSuccess)
-    .catch(ui.editPlanFailure)
-
-  //   .then(() => {
-  //     onGetAllPlans(event)
-  //   })
     .then(() => {
       $('#message').text('EDIT successfully. Get the plans again')
     })
     .catch(() => {
       $('#message').text('EDIT Failure.')
+        .catch(ui.editPlanFailure)
     })
 }
-const onGetPlan = (event) => {
+const onGetPlan = event => {
   api.getPlan()
     .then(ui.getPlansSuccess)
     .catch(ui.failure)
+    .then(() => {
+      $('#message').text('Get plan successfully')
+    })
 }
 
 const addHandlers = () => {

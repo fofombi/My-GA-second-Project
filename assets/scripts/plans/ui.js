@@ -39,7 +39,6 @@ const getAllPlanSuccess = responseData => {
   })
   store.data = responseData
   store.all = responseData
-  $('#message').text('Your Get all plans is successful')
   $('.content').html(showPlansHtml)
 }
 
